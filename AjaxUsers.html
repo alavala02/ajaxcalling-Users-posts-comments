@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    </head>
+
+    <body>
+        <div class="container-fluid m-0 p-0">
+            <div class="head-bar d-flex justify-content-between bg-warning align-items-center">
+                <img src="/home/anr/pp(1)" style="height:50px ;width: 50px;" alt="logo">
+                <a href="Logout.html">Logout</a>
+            </div>
+
+            <div class="head-bar2 d-flex justify-content-around bg-dark h-25 align-items-center">
+                <a href="users.html">Users</a>
+                <a href="service.html">Service</a>
+                <a href="About.html">About.html</a>
+                <a href="Contact.html">Contact</a>
+                <a href="VBM.html">VBM</a>
+            </div>
+        </div>
+
+
+            <div class=" container">
+                <div class="card" id="anr">
+
+                </div>
+
+            </div>
+
+    </body>
+
+    <script>
+        var x=new XMLHttpRequest();
+        x.open("GET","https:\\jsonplaceholder.typicode.com/users");
+        x.responseType="json"
+        x.send();
+        x.onload=function(){
+            var res= x.response
+            var card=""
+            res.forEach(function(val,ind) {
+                card+="<div class='card mt-4' ><div class='card-header text-center bg-info'>"+val.id+
+                  "</div><div class='text-center card-body'>"+ "<div class='row mt-2'><div class='col-md-6'>"+
+                  val.name+"</div>"+ "<div class='col-md-6'>"+val.username+"</div></div>"+ 
+                "<div class='row mt-2'><div class='col-md-6'>"+val.phone+"</div>"+
+                "<div class='col-md-6'>"+val.email+"</div></div>"+  
+                "<div class='row mt-2'><div class='col-md-6'>"+val.address.street+"</div>"+
+                "<div class='col-md-6'>"+val.address.city+"</div></div>"+"</div><div class='card-footer text-center bg-success'>"+
+                val.website+"</div></div>"
+            });
+            document.getElementById("anr").innerHTML=card
+        }
+
+    </script>
+</html>
